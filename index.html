@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auriculares & Stickers</title>
+    <link rel="stylesheet" href="sticker.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+        <h1>Auriculares & Stickers</h1>
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
+            <ul>
+                <li style="--i:1"><a href="index.html">Inicio</a></li>
+                <li style="--i:2"><a href="sticker.html">Stickers</a></li>
+                <li style="--i:3"><a href="auricular.html">Auriculares</a></li>
+                <li style="--i:4"><a href="enviosPagos.html">Envíos y Medios de Pago</a></li>
+                <li style="--i:4"><a href="https://wa.me/5492612345678">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="productos">
+            <article class="producto">
+                <p class="tituloProducto">Stickers</p>
+                <img src="images/stickers1.png" alt="Stickers">
+                <p>Explora nuestra variedad de stickers únicos y personalizados para decorar tus objetos favoritos. Tenemos dos tipos de calidades: la alta hecha con vinilo y la baja hecha con papel autoadhesivo.</p>
+                <p class="precio">Desde $300</p>
+                <button onclick="irASticker()">Más Información</button>
+            </article>
+            <article class="producto">
+                <p class="tituloProducto">Auriculares</p>
+                <img src="images/Figure1.png" alt="Auriculares">
+                <p>Nuestros auriculares inalámbricos ofrecen comodidad y estilo, con tecnología Bluetooth 5.3, resistencia al agua y al polvo, y un estuche de carga para disponibilidad continua.</p>
+                <p class="precio">Desde $10.000</p>
+                <button onclick="irAAuricular()">Más Información</button>
+            </article>
+        </section>
+        <!-- Replace the testimonios section with this new carousel section -->
+        <section class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="images/stickers1.png" alt="Stickers 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/Figure1.png" alt="Auriculares 1">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/stickers2.png" alt="Stickers 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/Figure2.png" alt="Auriculares 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/stickers3.png" alt="Auriculares 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/Figure3.png" alt="Auriculares 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/stickers4.png" alt="Auriculares 2">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/Figure4.png" alt="Auriculares 2">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-button prev">&#10094;</button>
+            <button class="carousel-button next">&#10095;</button>
+        </section>
+        <section class="contacto">
+            <h2>Contacto</h2>
+            <form id="contactForm" onsubmit="enviarWhatsApp(event)">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9,}" required>
+                
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+                
+                <button type="submit">Enviar por WhatsApp</button>
+            </form>
+        </section>
+
+        <footer>
+        </footer>
+        
+        <script>
+            function irASticker() { 
+                window.location.href = 'sticker.html'; 
+            }
+            function irAAuricular() { 
+                window.location.href = 'auricular.html'; 
+            }
+
+            function enviarWhatsApp(event) {
+                event.preventDefault();
+                
+                // Obtener los valores del formulario
+                const nombre = document.getElementById('nombre').value;
+                const telefono = document.getElementById('telefono').value;
+                const mensaje = document.getElementById('mensaje').value;
+                
+                // Número de WhatsApp al que se enviará el mensaje (agrega tu número)
+                const tuNumeroWhatsApp = '34XXXXXXXXX'; // Reemplaza con tu número incluyendo código de país
+                
+                // Crear el mensaje formateado
+                const mensajeFormateado = `¡Hola! Soy ${nombre}.%0A%0AMi mensaje es: %0A${mensaje}%0A%0A`;
+                
+                // Crear el enlace de WhatsApp
+                const urlWhatsApp = `https://wa.me/${5492617550057}?text=${mensajeFormateado}`;
+                
+                // Abrir WhatsApp en una nueva ventana
+                window.open(urlWhatsApp, '_blank');
+                
+                // Limpiar el formulario
+                document.getElementById('contactForm').reset();
+            }
+            // Add this script at the end of your body tag
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextButton = document.querySelector('.carousel-button.next');
+            const prevButton = document.querySelector('.carousel-button.prev');
+    
+            let currentIndex = 0;
+    
+            // Set initial position
+            updateCarousel();
+    
+            function updateCarousel() {
+                // Aplicar la transición
+                track.style.transition = 'transform 0.5s ease-in-out';
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+    
+            function moveToSlide(direction) {
+                if (direction === 'next') {
+                    currentIndex++;
+                    if (currentIndex >= slides.length) {
+                        // Cuando llegamos al final, esperamos que termine la transición
+                        // y luego saltamos al principio sin transición
+                        setTimeout(() => {
+                            track.style.transition = 'none';
+                            currentIndex = 0;
+                            track.style.transform = `translateX(0)`;
+                            // Reactivamos la transición después de un momento
+                            setTimeout(() => {
+                                track.style.transition = 'transform 0.5s ease-in-out';
+                            }, 50);
+                        }, 500);
+                    }
+                } else {
+                    currentIndex--;
+                    if (currentIndex < 0) {
+                        // Similar al anterior pero en dirección contraria
+                        setTimeout(() => {
+                            track.style.transition = 'none';
+                            currentIndex = slides.length - 1;
+                            track.style.transform = `translateX(-${(slides.length - 1) * 100}%)`;
+                            setTimeout(() => {
+                                track.style.transition = 'transform 0.5s ease-in-out';
+                            }, 50);
+                        }, 500);
+                    }
+                }
+                updateCarousel();
+            }
+    
+            nextButton.addEventListener('click', () => moveToSlide('next'));
+            prevButton.addEventListener('click', () => moveToSlide('prev'));
+    
+            // Auto-scroll cada 5 segundos
+            setInterval(() => {
+                moveToSlide('next');
+            }, 5000);
+        </script>
+</body>
+</html>

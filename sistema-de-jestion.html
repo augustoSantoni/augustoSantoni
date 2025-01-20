@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestión</title>
+    <link rel="stylesheet" href="sistema-de-jestion.css">
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <h2>Iniciar Sesión</h2>
+        <input type="password" id="passwordInput" placeholder="Contraseña">
+        <button onclick="login()">Ingresar</button>
+    </div>
+
+    <div class="main-container" id="mainContainer">
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('dashboard')">Dashboard</button>
+            <button class="tab" onclick="showTab('inventory')">Inventario</button>
+            <button class="tab" onclick="showTab('sales')">Ventas</button>
+        </div>
+
+        <div id="dashboard" class="tab-content active">
+            <div class="dashboard">
+                <div class="dashboard-card">
+                    <h3>Total Ventas</h3>
+                    <p id="totalSales">$0</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Ganancia Total</h3>
+                    <p id="totalProfit">$0</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="inventory" class="tab-content">
+            <div class="section">
+                <h3>Agregar Producto</h3>
+                <input type="text" id="productName" placeholder="Nombre del producto">
+                <input type="number" id="productPrice" placeholder="Precio de venta">
+                <input type="number" id="productProfit" placeholder="Ganancia por unidad">
+                <input type="number" id="productQuantity" placeholder="Cantidad">
+                <input type="file" id="productImage" accept="image/*">
+                <button class="sale-button" onclick="addProduct()">Agregar Producto</button>
+            </div>
+            <div class="section">
+                <h3>Inventario Actual</h3>
+                <table id="inventoryTable">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Precio Venta</th>
+                            <th>Ganancia/Unidad</th>
+                            <th>Cantidad</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="sales" class="tab-content">
+            <div class="section">
+                <h3>Registrar Venta</h3>
+                <select id="saleProduct"></select>
+                <input type="number" id="saleQuantity" placeholder="Cantidad">
+                <input type="text" id="saleMessage" placeholder="Mensaje">
+                <button class="sale-button" onclick="registerSale()">Registrar Venta</button>
+            </div>
+            <div class="section">
+                <h3>Historial de Ventas</h3>
+                <table id="salesTable">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Total Venta</th>
+                            <th>Ganancia</th>
+                            <th>Mensaje</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="sistema-de-jestion.js"></script>
+</body>
+</html>

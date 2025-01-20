@@ -1,0 +1,622 @@
+/* Estilos adicionales para la página de stickers */
+.info-stickers {
+    padding: 4rem 2rem;
+    background: var(--background);
+}
+
+.info-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-container h2 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.calidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.calidad {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.calidad:hover {
+    transform: translateY(-10px);
+}
+
+.calidad h3 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.calidad ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.calidad ul li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.calidad ul li::before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.precio {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.envios {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--white);
+}
+
+.envios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.envios h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.opciones-envio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.opcion {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.opcion h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.opcion ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.opcion ul li {
+    padding: 0.5rem 0;
+}
+
+address {
+    font-style: normal;
+    line-height: 1.6;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .calidades, .opciones-envio {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-stickers, .envios {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Mantenemos las variables de colores */
+:root {
+    --primary: #2D31FA;
+    --secondary: #5D8BF4;
+    --accent: #51557E;
+    --background: #f8f9ff;
+    --text: #1b1b1b;
+    --white: #ffffff;
+}
+
+/* Estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 70px; /* Espacio para el header fijo */
+}
+
+/* Header y navegación */
+header {
+    background: rgba(45, 49, 250, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: var(--white);
+    font-size: 1.8rem;
+    z-index: 2;
+}
+
+/* Checkbox oculto para el toggle */
+.nav-toggle {
+    display: none;
+}
+
+/* Estilos para la navegación */
+nav {
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Efecto hover para los enlaces */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--white);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Estilos móviles */
+@media screen and (max-width: 768px) {
+    /* Botón hamburguesa */
+    .nav-toggle-label {
+        display: flex;
+        flex-direction: column;
+        width: 30px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .nav-toggle-label span {
+        height: 2px;
+        width: 100%;
+        background-color: var(--white);
+        margin: 3px 0;
+        transition: 0.3s;
+        transform-origin: left;
+    }
+
+    /* Navegación móvil */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--primary);
+        padding-top: 70px;
+        transition: right 0.3s ease;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    nav ul li {
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.3s ease;
+        transition-delay: calc(0.1s * var(--i));
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.2rem;
+    }
+
+    /* Estados del menú cuando está activo */
+    .nav-toggle:checked ~ nav {
+        right: 0;
+    }
+
+    /* Animación de las líneas del menú */
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+        transform: rotate(45deg);
+        background-color: var(--white);
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+        transform: rotate(-45deg);
+        background-color: var(--white);
+    }
+
+    /* Animación de entrada de los elementos del menú */
+    .nav-toggle:checked ~ nav ul li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animación suave al hacer scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* Sección Hero con mejor manejo de imagen */
+.hero {
+    position: relative;
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--accent);
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain; /* Cambiado a contain para evitar recortes */
+}
+
+/* Sección de productos con mejor manejo de imágenes */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: var(--background);
+}
+
+.producto {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.producto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.producto .imagen-container {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+}
+
+.producto img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain; /* Cambiado a contain para evitar recortes */
+}
+
+.producto h2 {
+    color: var(--text);
+    padding: 1.5rem 1rem;
+    font-size: 1.5rem;
+}
+
+.producto p {
+    color: var(--accent);
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.producto ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.producto .precio {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin: 1rem 0;
+}
+
+.tituloProducto {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+button {
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 1rem;
+}
+
+button:hover {
+    background: var(--secondary);
+    transform: scale(1.05);
+}
+
+/* Carousel Styles */
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    width: 100%;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    overflow: hidden;
+}
+
+.carousel-container {
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    padding: 0 1rem;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary);
+    color: white;
+    border: 2px solid white;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-button:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button:disabled {
+    background: #cccccc;
+    border-color: #999999;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .carousel-container {
+        width: 90%;
+    }
+    
+    .carousel-button {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+/* Formulario de contacto moderno */
+.contacto {
+    padding: 4rem 2rem;
+    background: var(--background);
+}
+
+.contacto form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0 1rem;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.contacto input:focus,
+.contacto textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Redes sociales con efectos hover */
+.redes-sociales {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.redes-sociales a {
+    color: var(--primary);
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.redes-sociales a:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* Footer moderno */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 2rem;
+    text-align: center;
+}
+
+footer nav ul {
+    margin-top: 1rem;
+}
+
+footer nav ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+footer nav ul li a:hover {
+    color: var(--white);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .productos {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+
+    .hero {
+        height: auto;
+    }
+}
+
+.tituloCarrusel, .tituloProductos{
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.imagenes {
+    display: flex;
+    justify-content: space-between;
+}
+
+.imagenes img {
+    max-width: 18%; /* Ajusta esto según el tamaño de tus imágenes */
+    margin: 0 5px; /* Espaciado entre imágenes */
+}
